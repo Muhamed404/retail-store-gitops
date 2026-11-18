@@ -1,0 +1,31 @@
+# This repo is public. Never commit anything that can unlock a cluster or a database.
+
+# Plain Kubernetes Secrets before they are sealed (seal them with kubeseal, commit only the sealed file)
+*-unsealed.yaml
+*.secret.yaml
+k8s/**/secret.yaml
+
+# Cluster access and keys
+kubeconfig*
+*.kubeconfig
+*.pem
+*.key
+*.crt
+!platform/cert-manager/*.crt.example
+
+# Sealed Secrets controller backup key (keep it offline, never in Git)
+sealed-secrets-key*.yaml
+
+# Ansible
+*.retry
+ansible/group_vars/*vault*.yml
+.vault_pass*
+
+# Helm
+helm/**/charts/*.tgz
+helm/**/Chart.lock
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/
