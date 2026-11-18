@@ -290,7 +290,7 @@ Liveflow never edits this repo. It reads the tools that act on it:
 | logs | Loki | Loki + Promtail |
 | dev containers | Prometheus + cAdvisor on the dev server | `monitoring/compose/` |
 
-Liveflow points each environment at **one** Deployment and namespace. Use `ui` (the front door, and the service the stress test hits hardest); showing all five services per environment would be a change in Liveflow itself.
+In Liveflow, each environment lists **all five Deployments** of the namespace: `ui, catalog, cart, orders, checkout`. List `ui` first: it is the main service, whose version leads the page and whose HPA the stress test watches. Liveflow then shows every service with its version, pods, HPA and state, totals across all of them, and which service is rolling out or scaling.
 
 ---
 
